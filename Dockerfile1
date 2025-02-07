@@ -15,7 +15,7 @@ RUN conda install numpy matplotlib openmm tqdm mdtraj seaborn scikit-learn cytho
 RUN pip3 install crossflow==0.1.1
 RUN pip3 install ipywidgets
 
-RUN jupyter nbextension enable --py widgetsnbextension
+# RUN jupyter nbextension enable --py widgetsnbextension
 
 # Add all of the workshop files to the home directory
 RUN git clone --depth=1 https://github.com/rostaresearch/enhanced-sampling-workshop-2022.git

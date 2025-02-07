@@ -19,13 +19,13 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -f Dockerfile1 --build-arg BASE_IMAGE=${{ env.TAG }} \
+          docker build --file Dockerfile1 --build-arg BASE_IMAGE=${{ env.TAG }} \
           -t ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.IMAGE_NAME }}-part1:${{ env.TAG }} \
-          -t ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.IMAGE_NAME }}-part1:latest
+          -t ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.IMAGE_NAME }}-part1:latest .
           
-          docker build -f Dockerfile2 --build-arg BASE_IMAGE=${{ env.TAG }} \
+          docker build --file Dockerfile2 --build-arg BASE_IMAGE=${{ env.TAG }} \
           -t ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.IMAGE_NAME }}-part2:${{ env.TAG }} \
-          -t ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.IMAGE_NAME }}-part2:latest
+          -t ${{ env.REGISTRY }}/${{ env.REPO }}/${{ env.IMAGE_NAME }}-part2:latest .
 
       - name: Authenticate with harbor
         uses: docker/login-action@v3

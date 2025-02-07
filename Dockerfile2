@@ -1,0 +1,28 @@
+# Start with BioSim base image.
+ARG BASE_IMAGE=latest
+FROM harbor.stfc.ac.uk/biosimulation-cloud/biosim-jupyter-base:$BASE_IMAGE
+
+LABEL maintainer="James Gebbie-Rayet <james.gebbie@stfc.ac.uk>"
+
+# Switch to jovyan user.
+USER $NB_USER
+WORKDIR $HOME
+
+# Conda install packages
+RUN conda install numpy matplotlib openmm tqdm mdtraj seaborn scikit-learn cython
+
+# Pip install packages
+RUN pip3 install crossflow==0.1.1
+
+# Add all of the workshop files to the home directory
+RUN git clone --depth=1 https://github.com/rostaresearch/enhanced-sampling-workshop-2022.git
+RUN mv enhanced-sampling-workshop-2022/* . && \
+    rm -r enhanced-sampling-workshop-2022 Day1 README.md conda_env.yml requirements.txt && \
+    mv Day2/* . && \
+    rm -r Day2
+
+# UNCOMMENT THIS LINE FOR REMOTE DEPLOYMENT
+COPY jupyter_notebook_config.py /etc/jupyter/
+
+# Always finish with non-root user as a precaution.
+USER $NB_USER

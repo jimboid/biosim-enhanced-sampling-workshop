@@ -1,5 +1,5 @@
-PSDI Enhanced Sampling Workshop
-===============================
+CCPBioSim Enhanced Sampling Workshop
+====================================
 
 [![enhanced sampling workshop](https://github.com/jimboid/biosim-enhanced-sampling-workshop/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/jimboid/biosim-enhanced-sampling-workshop/actions/workflows/build.yml)
 

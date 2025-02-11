@@ -1,4 +1,4 @@
-name: enhanced sampling workshop
+name: build
 
 on:
   repository_dispatch:

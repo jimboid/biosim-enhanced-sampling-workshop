@@ -22,5 +22,5 @@ How to Use
 In our containers we are using the JupyterHub default port 8888, so you should
 forward this port when deploying locally::
 
-    docker run -p 8888:8888 harbor.stfc.ac.uk/biosimulation-cloud/biosim-enhanced-sampling-workshop-part1:latest
-    docker run -p 8888:8888 harbor.stfc.ac.uk/biosimulation-cloud/biosim-enhanced-sampling-workshop-part2:latest
+    docker run -p 8888:8888 ghcr.io/jimboid/biosim-enhanced-sampling-workshop-part1:latest
+    docker run -p 8888:8888 ghcr.io/jimboid/biosim-enhanced-sampling-workshop-part2:latest

@@ -3,7 +3,6 @@ name: test-part1
 on:
   repository_dispatch:
     types: [test1]
-  workflow_dispatch:
 
 jobs:
   tests:

@@ -1,4 +1,4 @@
-name: test-part1
+name: tests
 
 on:
   repository_dispatch:

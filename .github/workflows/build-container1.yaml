@@ -1,4 +1,4 @@
-name: build-part1
+name: build
 
 on:
   repository_dispatch:

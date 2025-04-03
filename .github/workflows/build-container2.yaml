@@ -2,17 +2,7 @@ name: build
 
 on:
   repository_dispatch:
-    types: [build]
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Base container version tag'
-        required: true
-        default: 'null'
-
-env:
-  REGISTRY: "ghcr.io"
-  IMAGE: ${{ github.repository }}
+    types: [build2]
 
 jobs:
   base-build2:
@@ -29,16 +19,15 @@ jobs:
           fi
 
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v5.7.0
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE }}-part2
+          images: ghcr.io/${{ github.repository }}-part2
           tags: |
-            latest
-            ${{ steps.version-tag.outputs.tag }}
+            dev
           labels: |
             annotation-index.org.opencontainers.image.source=https://github.com/${{ github.repository }}
             annotation-index.org.opencontainers.image.licenses=MIT
@@ -71,3 +60,11 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           annotations: ${{ steps.meta.outputs.annotations }}
+
+      - name: Dispatch Tests
+        uses: peter-evans/repository-dispatch@v3.0.0
+        with:
+          token: ${{ secrets.BUILD_TOKEN }}
+          repository: ${{ github.repository }}
+          event-type: test2
+          client-payload: '{"tag": "${{ steps.version-tag.outputs.tag }}"}'

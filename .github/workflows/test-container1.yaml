@@ -1,37 +1,36 @@
-name: tests
+name: test-part1
 
 on:
   repository_dispatch:
-    types: [test]
+    types: [test1]
   workflow_dispatch:
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     timeout-minutes: 360
-    name: Testing ${{ github.repository }}
+    name: Testing ${{ github.repository }}-part1
     steps:
+      - name: Test notebooks
+        shell: bash
+        run: |
+          docker run -t ghcr.io/${{ github.repository }}-part1:dev bash -c "\
+            pip install pytest nbmake; \
+            cd notebooks; \
+            pytest --nbmake *.ipynb; "
 
-    - name: Test notebooks
-      shell: bash
-      run: |
-        docker run -t ghcr.io/${{ github.repository }}:dev bash -c "\
-          pip install pytest nbmake; \
-          cd notebooks; \
-          pytest --nbmake *.ipynb; "
+      - name: Authenticate with GHCR
+        id: ghcr-auth
+        uses: docker/login-action@v3.4.0
+        with:
+          registry: "ghcr.io"
+          username: ${{github.actor}}
+          password: ${{secrets.BUILD_TOKEN}}
 
-    - name: Authenticate with GHCR
-      id: ghcr-auth
-      uses: docker/login-action@v3.4.0
-      with:
-        registry: "ghcr.io"
-        username: ${{github.actor}}
-        password: ${{secrets.BUILD_TOKEN}}
-
-    - name: Push new tags
-      shell: bash
-      run: |
-        docker buildx imagetools create \
-          --tag ghcr.io/${{ github.repository }}:latest \
-          --tag ghcr.io/${{ github.repository }}:${{ github.event.client_payload.tag }} \
-          ghcr.io/${{ github.repository }}:dev
+      - name: Push new tags
+        shell: bash
+        run: |
+          docker buildx imagetools create \
+            --tag ghcr.io/${{ github.repository }}-part1:latest \
+            --tag ghcr.io/${{ github.repository }}-part1:${{ github.event.client_payload.tag }} \
+            ghcr.io/${{ github.repository }}-part1:dev

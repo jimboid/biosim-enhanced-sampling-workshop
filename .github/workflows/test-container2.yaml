@@ -8,14 +8,14 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     timeout-minutes: 360
-    name: Testing ${{ github.repository }}
+    name: Testing ${{ github.repository }}-part2
     steps:
       - name: Test notebooks
         shell: bash
         run: |
           docker run -t ghcr.io/${{ github.repository }}-part2:dev bash -c "\
             pip install pytest nbmake; \
-            pytest --nbmake --nbmake-timeout=3600 **/*ipynb; "
+            pytest --nbmake --nbmake-timeout=3600 *ipynb **/*ipynb; "
 
       - name: Authenticate with GHCR
         id: ghcr-auth

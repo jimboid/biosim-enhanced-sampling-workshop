@@ -18,7 +18,7 @@ RUN conda install numpy matplotlib openmm tqdm mdtraj seaborn scikit-learn cytho
 RUN pip3 install crossflow==0.1.1
 
 # Add all of the workshop files to the home directory
-RUN git clone --depth=1 https://github.com/rostaresearch/enhanced-sampling-workshop-2022.git
+RUN git clone --depth=1 https://github.com/CCPBioSim/enhanced-sampling-workshop.git
 RUN mv enhanced-sampling-workshop/* . && \
     rm -r enhanced-sampling-workshop Day1 README.md conda_env.yml requirements.txt && \
     mv Day2/* . && \

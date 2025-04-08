@@ -21,7 +21,7 @@ RUN pip3 install ipywidgets, tabulate
 # RUN jupyter nbextension enable --py widgetsnbextension
 
 # Add all of the workshop files to the home directory
-RUN git clone --depth=1 https://github.com/rostaresearch/enhanced-sampling-workshop-2022.git
+RUN git clone --depth=1 https://github.com/CCPBioSim/enhanced-sampling-workshop.git
 RUN mv enhanced-sampling-workshop-2022/* . && \
     rm -r enhanced-sampling-workshop-2022 Day2 README.md conda_env.yml requirements.txt && \
     mv Day1/* . && \

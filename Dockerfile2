@@ -22,7 +22,9 @@ RUN git clone --depth=1 https://github.com/rostaresearch/enhanced-sampling-works
 RUN mv enhanced-sampling-workshop-2022/* . && \
     rm -r enhanced-sampling-workshop-2022 Day1 README.md conda_env.yml requirements.txt && \
     mv Day2/* . && \
-    rm -r Day2
+    rm -r Day2 && \
+    mv  && /home/jovyan/4.WE_Simulation_NaCl_HPC/fake_md /opt/conda/bin/ \
+    chmod +x /opt/conda/bin/fake_md
 
 # UNCOMMENT THIS LINE FOR REMOTE DEPLOYMENT
 COPY jupyter_notebook_config.py /etc/jupyter/

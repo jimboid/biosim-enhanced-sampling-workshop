@@ -15,6 +15,9 @@ jobs:
         run: |
           docker run -t ghcr.io/${{ github.repository }}-part1:dev bash -c "\
             pip install pytest nbmake; \
+            wget https://www.dropbox.com/sh/wy7rbqxrofaq946/AABFGGXAxWz7LquJnISeVYQca -O example.zip \
+            unzip example.zip -d example \
+            mv example /home/jovyan/3.Unbinding_Procedure \
             find . -name '*.ipynb' | pytest --nbmake --nbmake-timeout=3600; "
 
       - name: Authenticate with GHCR

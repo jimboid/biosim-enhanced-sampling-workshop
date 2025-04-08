@@ -22,8 +22,8 @@ RUN pip3 install ipywidgets tabulate
 
 # Add all of the workshop files to the home directory
 RUN git clone --depth=1 https://github.com/CCPBioSim/enhanced-sampling-workshop.git
-RUN mv enhanced-sampling-workshop-2022/* . && \
-    rm -r enhanced-sampling-workshop-2022 Day2 README.md conda_env.yml requirements.txt && \
+RUN mv enhanced-sampling-workshop/* . && \
+    rm -r enhanced-sampling-workshop Day2 README.md conda_env.yml requirements.txt && \
     mv Day1/* . && \
     rm -r Day1
 

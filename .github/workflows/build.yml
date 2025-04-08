@@ -1,4 +1,4 @@
-name: build
+name: build-start
 
 on:
   repository_dispatch:

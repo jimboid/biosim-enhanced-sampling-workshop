@@ -15,7 +15,7 @@ WORKDIR $HOME
 RUN conda install numpy matplotlib openmm tqdm mdtraj seaborn scikit-learn cython
 
 # Pip install packages
-RUN pip3 install crossflow==0.1.1
+RUN pip3 install crossflow
 
 # Add all of the workshop files to the home directory
 RUN git clone --depth=1 https://github.com/CCPBioSim/enhanced-sampling-workshop.git

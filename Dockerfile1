@@ -15,7 +15,7 @@ WORKDIR $HOME
 RUN conda install numpy matplotlib openmm tqdm mdtraj seaborn scikit-learn cython
 
 # Install pip packages
-RUN pip3 install crossflow==0.1.1
+RUN pip3 install crossflow
 RUN pip3 install ipywidgets tabulate
 
 # RUN jupyter nbextension enable --py widgetsnbextension

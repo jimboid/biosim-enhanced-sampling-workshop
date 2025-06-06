@@ -15,7 +15,8 @@ CCPBioSim Enhanced Sampling Workshop
 
 This container is derived from the CCPBioSim JupyterHub image. This container
 adds the necessary software packages and notebook content to form a deployable
-course container. The source content for this course can be found at
+course container. The source content for this course can be found at 
+https://github.com/CCPBioSim/enhanced-sampling-workshop forked from
 https://github.com/rostaresearch/enhanced-sampling-workshop-2022
 
 How to Use
